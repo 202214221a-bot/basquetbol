@@ -1,0 +1,69 @@
+/* Estilos generales de la Liga de Básquetbol */
+:root {
+  --fondo: #f4f5f7;
+  --texto: #1f2933;
+  --acento: #e8590c;
+  --borde: #dde1e6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+header {
+  background: #1f2933;
+  color: #fff;
+  padding: .8rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+header h1 { margin: 0; font-size: 1.2rem; }
+
+nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+nav a { color: #fff; text-decoration: none; }
+nav a:hover { color: var(--acento); }
+
+main { max-width: 960px; margin: 1.5rem auto; padding: 0 1rem; }
+
+/* Tablas */
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; margin-bottom: 1rem; }
+th, td { padding: .6rem .8rem; border-bottom: 1px solid var(--borde); text-align: left; }
+th { background: #eceff3; font-size: .85rem; }
+.puntaje { font-weight: bold; text-align: center; }
+
+/* Tarjetas y formularios */
+.tarjeta { background: #fff; padding: 1.5rem; border-radius: 8px; }
+.angosta { max-width: 480px; margin: 0 auto; }
+label { display: block; margin-bottom: .8rem; font-size: .9rem; }
+input, select {
+  display: block; width: 100%; padding: .5rem; margin-top: .25rem;
+  border: 1px solid var(--borde); border-radius: 6px; font: inherit;
+}
+.fila { display: flex; gap: 1rem; }
+.fila label { flex: 1; }
+
+/* Botones y enlaces */
+button, .boton {
+  background: var(--acento); color: #fff; border: 0; padding: .5rem 1rem;
+  border-radius: 6px; cursor: pointer; text-decoration: none; font: inherit;
+}
+button.enlace { background: none; color: #fff; padding: 0; }
+main button.enlace { color: var(--acento); }
+button.enlace.peligro { color: #c92a2a; }
+.en-linea { display: inline; }
+.acciones { white-space: nowrap; }
+.acciones > * { margin-right: .6rem; }
+.barra { display: flex; justify-content: space-between; align-items: center; }
+.filtro { margin-bottom: 1rem; max-width: 300px; }
+
+/* Mensajes */
+.mensaje { padding: .7rem 1rem; border-radius: 6px; margin-bottom: 1rem; }
+.mensaje.exito { background: #d3f9d8; }
+.mensaje.error { background: #ffe3e3; }
