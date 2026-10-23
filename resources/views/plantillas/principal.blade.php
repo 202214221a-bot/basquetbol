@@ -12,6 +12,14 @@
   </header>
 
   <main>
+    @if (session('exito'))
+      <div class="mensaje exito">{{ session('exito') }}</div>
+    @endif
+
+    @foreach ($errors->all() as $error)
+      <div class="mensaje error">{{ $error }}</div>
+    @endforeach
+
     @yield('contenido')
   </main>
 </body>
