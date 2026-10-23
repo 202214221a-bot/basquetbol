@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/registro', [AutenticacionController::class, 'mostrarRegistro'])->name('registro');
+
+Route::post('/registro', [AutenticacionController::class, 'registrar'])->name('registro');
