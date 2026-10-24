@@ -2,10 +2,13 @@
 
 @section('contenido')
 <section class="tarjeta angosta">
-  <h2>Nuevo equipo</h2>
+  <h2>{{ $equipo->exists ? 'Editar equipo' : 'Nuevo equipo' }}</h2>
 
-  <form method="POST" action="{{ route('equipos.store') }}">
+  <form method="POST" action="{{ $equipo->exists ? route('equipos.update', $equipo) : route('equipos.store') }}">
     @csrf
+    @if ($equipo->exists)
+      @method('PUT')
+    @endif
 
     <label>Nombre
       <input type="text" name="nombre" value="{{ old('nombre', $equipo->nombre) }}" required>

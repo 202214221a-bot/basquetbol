@@ -25,6 +25,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/salir', [AutenticacionController::class, 'salir'])->name('salir');
 
-    Route::resource('equipos', EquipoController::class)->only(['index', 'create', 'store']);
+    Route::resource('equipos', EquipoController::class)->only(['index', 'create', 'store', 'edit', 'update']);
 
 });

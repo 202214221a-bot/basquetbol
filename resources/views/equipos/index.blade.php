@@ -11,6 +11,7 @@
     <th>Nombre</th>
     <th>Ciudad</th>
     <th>Año de fundación</th>
+    <th></th>
   </tr>
 
   @forelse ($equipos as $equipo)
@@ -18,11 +19,15 @@
     <td>{{ $equipo->nombre }}</td>
     <td>{{ $equipo->ciudad }}</td>
     <td>{{ $equipo->anio_fundacion }}</td>
+    <td class="acciones">
+      <a href="{{ route('equipos.edit', $equipo) }}">Editar</a>
+    </td>
   </tr>
   @empty
   <tr>
-    <td colspan="3">Aún no hay equipos registrados.</td>
+    <td colspan="4">Aún no hay equipos registrados.</td>
   </tr>
   @endforelse
 </table>
+
 @endsection
