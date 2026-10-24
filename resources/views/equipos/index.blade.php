@@ -3,6 +3,7 @@
 @section('contenido')
 <div class="barra">
   <h2>Equipos</h2>
+  <a class="boton" href="{{ route('equipos.create') }}">+ Nuevo equipo</a>
 </div>
 
 <table>
