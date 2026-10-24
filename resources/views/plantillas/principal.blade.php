@@ -13,6 +13,7 @@
     @auth
     <nav>
       <a href="{{ route('inicio') }}">Inicio</a>
+            <a href="{{ route('equipos.index') }}">Equipos</a>
 
       <form method="POST" action="{{ route('salir') }}" class="en-linea">
         @csrf

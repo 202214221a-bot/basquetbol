@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutenticacionController;
+use App\Http\Controllers\EquipoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,7 +13,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/registro', [AutenticacionController::class, 'mostrarRegistro'])->name('registro');
     Route::post('/registro', [AutenticacionController::class, 'registrar']);
 
-    // El nombre login es obligatorio: Laravel lo usa para mandar aquí a quien no ha iniciado sesión
     Route::get('/ingresar', [AutenticacionController::class, 'mostrarIngreso'])->name('login');
     Route::post('/ingresar', [AutenticacionController::class, 'ingresar']);
 });
@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/inicio', function () {
         return view('inicio');
     })->name('inicio');
-        
+
     Route::post('/salir', [AutenticacionController::class, 'salir'])->name('salir');
+
+    Route::resource('equipos', EquipoController::class)->only('index');
 });
