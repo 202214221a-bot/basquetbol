@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AutenticacionController extends Controller
 {
@@ -36,6 +37,39 @@ class AutenticacionController extends Controller
 
         User::create($datos);
 
-        return redirect()->route('registro')->with('exito', 'Cuenta creada correctamente.');
+        return redirect()->route('login')->with('exito', 'Cuenta creada. Ya puedes iniciar sesión.');
+    }
+
+    /**
+     * Muestra el formulario para iniciar sesión.
+     */
+    public function mostrarIngreso()
+    {
+        return view('autenticacion.ingreso');
+    }
+
+    /**
+     * Comprueba el correo y la contraseña. Si son correctos, abre la sesión.
+     */
+    public function ingresar(Request $request)
+    {
+        $credenciales = $request->validate([
+            'email'    => ['required', 'email'],
+            'password' => ['required'],
+        ], [
+            'email.required'    => 'El correo es obligatorio.',
+            'email.email'       => 'Escribe un correo válido.',
+            'password.required' => 'La contraseña es obligatoria.',
+        ]);
+
+        if (Auth::attempt($credenciales)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('inicio'));
+        }
+
+        return back()
+            ->withErrors(['email' => 'Correo o contraseña incorrectos.'])
+            ->onlyInput('email');
     }
 }
