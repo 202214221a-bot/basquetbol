@@ -22,4 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/inicio', function () {
         return view('inicio');
     })->name('inicio');
+        
+    Route::post('/salir', [AutenticacionController::class, 'salir'])->name('salir');
 });

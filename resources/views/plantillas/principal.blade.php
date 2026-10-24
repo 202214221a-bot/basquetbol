@@ -7,8 +7,19 @@
   <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 <body>
-  <header>
+    <header>
     <h1>🏀 Liga de Básquetbol</h1>
+
+    @auth
+    <nav>
+      <a href="{{ route('inicio') }}">Inicio</a>
+
+      <form method="POST" action="{{ route('salir') }}" class="en-linea">
+        @csrf
+        <button type="submit" class="enlace">{{ auth()->user()->name }} · Salir</button>
+      </form>
+    </nav>
+    @endauth
   </header>
 
   <main>
