@@ -54,6 +54,16 @@ class EquipoController extends Controller
         return redirect()->route('equipos.index')->with('exito', 'Equipo actualizado correctamente.');
     }
 
+        /**
+     * Elimina el equipo.
+     */
+    public function destroy(Equipo $equipo)
+    {
+        $equipo->delete();
+
+        return redirect()->route('equipos.index')->with('exito', 'Equipo eliminado correctamente.');
+    }
+
     /**
      * Reglas de validación compartidas por crear y editar.
      */

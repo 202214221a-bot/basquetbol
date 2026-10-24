@@ -21,6 +21,11 @@
     <td>{{ $equipo->anio_fundacion }}</td>
     <td class="acciones">
       <a href="{{ route('equipos.edit', $equipo) }}">Editar</a>
+      <form action="{{ route('equipos.destroy', $equipo) }}" method="POST" style="display: inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este equipo?')">Eliminar</button>
+      </form>
     </td>
   </tr>
   @empty
