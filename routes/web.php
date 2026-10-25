@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutenticacionController;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\JugadorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,4 +28,5 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('equipos', EquipoController::class)->except('show');
 
+    Route::get('/jugadores', [JugadorController::class, 'index'])->name('jugadores.index');
 });
