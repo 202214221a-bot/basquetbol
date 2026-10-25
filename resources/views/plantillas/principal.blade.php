@@ -13,7 +13,8 @@
     @auth
     <nav>
       <a href="{{ route('inicio') }}">Inicio</a>
-            <a href="{{ route('equipos.index') }}">Equipos</a>
+      <a href="{{ route('equipos.index') }}">Equipos</a>
+      <a href="{{ route('jugadores.index') }}">Jugadores</a>
 
       <form method="POST" action="{{ route('salir') }}" class="en-linea">
         @csrf
