@@ -64,6 +64,20 @@ class JugadorController extends Controller
             ->with('exito', 'Jugador actualizado correctamente.');
     }
 
+        /**
+     * Elimina el jugador.
+     */
+    public function destroy(Jugador $jugador)
+    {
+        $equipoId = $jugador->equipo_id;
+
+        $jugador->delete();
+
+        return redirect()
+            ->route('jugadores.index', ['equipo_id' => $equipoId])
+            ->with('exito', 'Jugador eliminado correctamente.');
+    }
+
     /**
      * Reglas de validación compartidas por crear y editar.
      */

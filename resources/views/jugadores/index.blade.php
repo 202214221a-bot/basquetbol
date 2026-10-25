@@ -38,6 +38,13 @@
       <td>{{ $jugador->estatura_cm ? $jugador->estatura_cm . ' cm' : '—' }}</td>
       <td class="acciones">
         <a href="{{ route('jugadores.edit', $jugador) }}">Editar</a>
+
+        <form method="POST" action="{{ route('jugadores.destroy', $jugador) }}" class="en-linea"
+              onsubmit="return confirm('¿Eliminar a este jugador?')">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="enlace peligro">Eliminar</button>
+        </form>
       </td>
     </tr>
     @empty
