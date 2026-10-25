@@ -28,5 +28,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('equipos', EquipoController::class)->except('show');
 
+    // Jugadores: se escriben a mano porque se crean dentro de un equipo
     Route::get('/jugadores', [JugadorController::class, 'index'])->name('jugadores.index');
+    Route::get('/equipos/{equipo}/jugadores/crear', [JugadorController::class, 'create'])->name('jugadores.create');
+    Route::post('/equipos/{equipo}/jugadores', [JugadorController::class, 'store'])->name('jugadores.store');
+    Route::get('/jugadores/{jugador}/editar', [JugadorController::class, 'edit'])->name('jugadores.edit');
+    Route::put('/jugadores/{jugador}', [JugadorController::class, 'update'])->name('jugadores.update');
 });

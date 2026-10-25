@@ -3,6 +3,9 @@
 @section('contenido')
 <div class="barra">
   <h2>Jugadores</h2>
+  @if ($equipo)
+    <a class="boton" href="{{ route('jugadores.create', $equipo) }}">+ Nuevo jugador</a>
+  @endif
 </div>
 
 @if ($equipos->isEmpty())
@@ -18,12 +21,13 @@
     </label>
   </form>
 
-  <table>
+    <table>
     <tr>
       <th>#</th>
       <th>Nombre</th>
       <th>Posición</th>
       <th>Estatura</th>
+      <th></th>
     </tr>
 
     @forelse ($jugadores as $jugador)
@@ -32,12 +36,16 @@
       <td>{{ $jugador->nombre }}</td>
       <td>{{ $jugador->posicion }}</td>
       <td>{{ $jugador->estatura_cm ? $jugador->estatura_cm . ' cm' : '—' }}</td>
+      <td class="acciones">
+        <a href="{{ route('jugadores.edit', $jugador) }}">Editar</a>
+      </td>
     </tr>
     @empty
     <tr>
-      <td colspan="4">Este equipo todavía no tiene jugadores.</td>
+      <td colspan="5">Este equipo todavía no tiene jugadores.</td>
     </tr>
     @endforelse
   </table>
+
 @endif
 @endsection
