@@ -3,6 +3,7 @@
 @section('contenido')
 <div class="barra">
   <h2>Partidos</h2>
+  <a class="boton" href="{{ route('partidos.create') }}">+ Nuevo partido</a>
 </div>
 
 <table>
@@ -12,6 +13,7 @@
     <th>Resultado</th>
     <th>Visitante</th>
     <th>Estado</th>
+    <th></th>
   </tr>
 
   @forelse ($partidos as $partido)
@@ -23,10 +25,13 @@
     </td>
     <td>{{ $partido->equipoVisitante->nombre }}</td>
     <td>{{ $partido->estaFinalizado() ? 'Finalizado' : 'Programado' }}</td>
+    <td class="acciones">
+      <a href="{{ route('partidos.edit', $partido) }}">Editar</a>
+    </td>
   </tr>
   @empty
   <tr>
-    <td colspan="5">Aún no hay partidos registrados.</td>
+    <td colspan="6">Aún no hay partidos registrados.</td>
   </tr>
   @endforelse
 </table>
