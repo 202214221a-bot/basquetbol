@@ -4,6 +4,7 @@ use App\Http\Controllers\AutenticacionController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\JugadorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PartidoController;
 
 Route::get('/', function () {
     return redirect()->route('inicio');
@@ -35,4 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/jugadores/{jugador}/editar', [JugadorController::class, 'edit'])->name('jugadores.edit');
     Route::put('/jugadores/{jugador}', [JugadorController::class, 'update'])->name('jugadores.update');
     Route::delete('/jugadores/{jugador}', [JugadorController::class, 'destroy'])->name('jugadores.destroy');
+    Route::resource('partidos', PartidoController::class)->only(['index', 'create', 'store', 'edit', 'update']);
+    Route::resource('partidos', PartidoController::class)->except('show');
 });
+
