@@ -1,6 +1,23 @@
 @extends('plantillas.principal')
 
 @section('contenido')
+<h2>Resumen de la liga</h2>
+
+<table>
+  <tr>
+    <th>Equipos</th>
+    <th>Jugadores</th>
+    <th>Partidos jugados</th>
+    <th>Partidos programados</th>
+  </tr>
+  <tr>
+    <td>{{ $resumen['equipos'] }}</td>
+    <td>{{ $resumen['jugadores'] }}</td>
+    <td>{{ $resumen['jugados'] }}</td>
+    <td>{{ $resumen['programados'] }}</td>
+  </tr>
+</table>
+
 <h2>Tabla de posiciones</h2>
 
 <table>
@@ -39,4 +56,21 @@
   PJ: partidos jugados · G: ganados · P: perdidos · PF: puntos a favor · PC: puntos en contra ·
   Dif: diferencia de puntos · Pts: 2 por victoria y 1 por derrota.
 </small>
+
+<h2>Últimos resultados</h2>
+
+<table>
+  @forelse ($recientes as $partido)
+  <tr>
+    <td>{{ $partido->fecha_hora->format('d/m/Y') }}</td>
+    <td>{{ $partido->equipoLocal->nombre }}</td>
+    <td class="puntaje">{{ $partido->puntos_local }} - {{ $partido->puntos_visitante }}</td>
+    <td>{{ $partido->equipoVisitante->nombre }}</td>
+  </tr>
+  @empty
+  <tr>
+    <td>Todavía no hay partidos finalizados.</td>
+  </tr>
+  @endforelse
+</table>
 @endsection
