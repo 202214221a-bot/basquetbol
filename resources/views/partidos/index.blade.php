@@ -27,6 +27,13 @@
     <td>{{ $partido->estaFinalizado() ? 'Finalizado' : 'Programado' }}</td>
     <td class="acciones">
       <a href="{{ route('partidos.edit', $partido) }}">Editar</a>
+
+      <form method="POST" action="{{ route('partidos.destroy', $partido) }}" class="en-linea"
+            onsubmit="return confirm('¿Eliminar este partido?')">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="enlace peligro">Eliminar</button>
+      </form>
     </td>
   </tr>
   @empty

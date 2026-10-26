@@ -70,6 +70,16 @@ class PartidoController extends Controller
         return redirect()->route('partidos.index')->with('exito', 'Partido actualizado correctamente.');
     }
 
+        /**
+     * Elimina el partido.
+     */
+    public function destroy(Partido $partido)
+    {
+        $partido->delete();
+
+        return redirect()->route('partidos.index')->with('exito', 'Partido eliminado correctamente.');
+    }
+
     /**
      * Reglas de validación compartidas por crear y editar.
      */

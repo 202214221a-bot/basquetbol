@@ -37,4 +37,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/jugadores/{jugador}', [JugadorController::class, 'update'])->name('jugadores.update');
     Route::delete('/jugadores/{jugador}', [JugadorController::class, 'destroy'])->name('jugadores.destroy');
     Route::resource('partidos', PartidoController::class)->only(['index', 'create', 'store', 'edit', 'update']);
+    Route::resource('partidos', PartidoController::class)->except('show');
 });
+
