@@ -16,6 +16,7 @@
       <a href="{{ route('equipos.index') }}">Equipos</a>
       <a href="{{ route('jugadores.index') }}">Jugadores</a>
       <a href="{{ route('partidos.index') }}">Partidos</a>
+      <a href="{{ route('estadisticas.index') }}">Estadísticas</a>
 
       <form method="POST" action="{{ route('salir') }}" class="en-linea">
         @csrf

@@ -5,6 +5,7 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\JugadorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PartidoController;
+use App\Http\Controllers\EstadisticaController;
 
 Route::get('/', function () {
     return redirect()->route('inicio');
@@ -38,5 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/jugadores/{jugador}', [JugadorController::class, 'destroy'])->name('jugadores.destroy');
     Route::resource('partidos', PartidoController::class)->only(['index', 'create', 'store', 'edit', 'update']);
     Route::resource('partidos', PartidoController::class)->except('show');
+    Route::get('/estadisticas', [EstadisticaController::class, 'index'])->name('estadisticas.index');
 });
 
