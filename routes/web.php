@@ -22,9 +22,7 @@ Route::middleware('guest')->group(function () {
 
 // Páginas solo para usuarios que SÍ iniciaron sesión
 Route::middleware('auth')->group(function () {
-    Route::get('/inicio', function () {
-        return view('inicio');
-    })->name('inicio');
+    Route::get('/inicio', [EstadisticaController::class, 'inicio'])->name('inicio');
 
     Route::post('/salir', [AutenticacionController::class, 'salir'])->name('salir');
 

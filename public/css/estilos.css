@@ -482,3 +482,71 @@ button.enlace.peligro { color: var(--rojo-oscuro); }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* 13. Página de inicio: saludo, contadores, líder y próximos partidos */
+.portada .fecha-hoy { color: #f3b8be; font-size: .9rem; font-weight: 600; margin-bottom: .6rem; }
+.portada .accesos { margin-top: 1.1rem; }
+.boton.claro { background: #fff; color: var(--negro); box-shadow: none; }
+.boton.claro:hover { background: var(--rojo-suave); color: var(--rojo-oscuro); box-shadow: none; }
+
+.contador {
+  display: inline-block;
+  min-width: 1.7rem;
+  padding: .05rem .5rem;
+  margin-left: .3rem;
+  border-radius: 999px;
+  background: var(--negro);
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+.titulo-panel { margin: 0 0 1rem; font-size: 1rem; color: var(--suave); text-transform: uppercase; letter-spacing: .06em; }
+
+.lider-card { text-align: center; border-top: 4px solid var(--ambar); }
+.trofeo { font-size: 2.6rem; line-height: 1; }
+.lider-nombre { margin-top: .4rem; font-size: 1.3rem; font-weight: 800; color: var(--negro); }
+.lider-puntos { font-size: 2.4rem; font-weight: 800; color: var(--rojo); line-height: 1.1; }
+.lider-puntos small { font-size: .9rem; font-weight: 600; }
+.lider-detalle { margin: .4rem 0 1.1rem; color: var(--suave); font-size: .9rem; }
+
+.vacio { text-align: center; color: var(--suave); }
+.vacio p { margin: .4rem 0 1rem; }
+
+.lista-partidos { list-style: none; margin: 0; padding: 0; }
+.lista-partidos li {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--borde);
+}
+.lista-partidos li:last-child { border-bottom: 0; }
+
+.fecha-bloque {
+  flex: none;
+  width: 3.2rem;
+  padding: .35rem 0;
+  border-radius: 10px;
+  background: var(--negro);
+  color: #fff;
+  text-align: center;
+  line-height: 1.1;
+}
+.fecha-bloque strong { display: block; font-size: 1.2rem; }
+.fecha-bloque span { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: #f3b8be; }
+
+.equipos-duelo { font-weight: 700; color: var(--negro); }
+.equipos-duelo em { color: var(--rojo); font-style: normal; font-weight: 800; margin: 0 .2rem; }
+
+@media (max-width: 760px) {
+  .dos-columnas { grid-template-columns: 1fr; }
+}
